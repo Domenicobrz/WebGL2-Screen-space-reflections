@@ -133,7 +133,10 @@ layout(location=3) out vec4 fragMaterial;
 
 void main() {
     vec4 col = vec4(texture(uTexture, Position.xyz).rgb, 1.0);
-	fragColor = col;
+    fragColor = col;
+    fragNormal = vec4(0.0);
+    fragMaterial = vec4(0.0);
+    fragPosition = vec4(0.0);
 }`;
 
 

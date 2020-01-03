@@ -70,10 +70,10 @@ function init() {
 function afterDownload() {
     initCamera();
 
+    initCubeMapProgram();
     initSceneProgram();
     initSSRProgram();
     initComposerProgram();
-    initCubeMapProgram();
 }
 
 function incrementDownloadCount() {
@@ -88,6 +88,27 @@ function incrementDownloadCount() {
 
 function downloadTextures() {
 
+
+    envmap1 = getTextureCube(
+        "assets/envmaps/1/posx.jpg", 
+        "assets/envmaps/1/negx.jpg", 
+        "assets/envmaps/1/posy.jpg", 
+        "assets/envmaps/1/negy.jpg", 
+        "assets/envmaps/1/posz.jpg", 
+        "assets/envmaps/1/negz.jpg", 
+        function() {
+            incrementDownloadCount();
+        });
+
+    envmap2 = getTextureCube(
+        "assets/envmaps/3/posx.jpg", 
+        "assets/envmaps/3/negx.jpg", 
+        "assets/envmaps/3/posy.jpg", 
+        "assets/envmaps/3/negy.jpg", 
+        "assets/envmaps/3/posz.jpg", 
+        "assets/envmaps/3/negz.jpg", 
+    function() {
+    });
 
     sceneTextures.albedoTexture = getTexture("assets/textures/Futuristic_Car_C.jpg", false, 
     function(){
@@ -123,27 +144,6 @@ function downloadTextures() {
     sceneTextures.streetAOmap = getTexture("assets/textures/street_aomap.png", false, 
     function(){
         incrementDownloadCount();
-    });
-
-    envmap1 = getTextureCube(
-        "assets/envmaps/1/posx.jpg", 
-        "assets/envmaps/1/negx.jpg", 
-        "assets/envmaps/1/posy.jpg", 
-        "assets/envmaps/1/negy.jpg", 
-        "assets/envmaps/1/posz.jpg", 
-        "assets/envmaps/1/negz.jpg", 
-        function() {
-            incrementDownloadCount();
-        });
-
-    envmap2 = getTextureCube(
-        "assets/envmaps/3/posx.jpg", 
-        "assets/envmaps/3/negx.jpg", 
-        "assets/envmaps/3/posy.jpg", 
-        "assets/envmaps/3/negy.jpg", 
-        "assets/envmaps/3/posz.jpg", 
-        "assets/envmaps/3/negz.jpg", 
-    function() {
     });
 
     sceneTextures.cubeTexture = envmap1;
